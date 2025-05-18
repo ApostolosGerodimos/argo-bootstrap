@@ -19,7 +19,7 @@ spec:
 
         server:
           extraArgs:
-            - --enable-feature=remote-write-receiver
+            enable-feature: remote-write-receiver
           resources:
             requests:
               cpu: 200m
