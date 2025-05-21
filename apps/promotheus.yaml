@@ -41,6 +41,17 @@ spec:
               - job_name: 'kubernetes-pods'
                 kubernetes_sd_configs:
                   - role: pod
+
+              - job_name: 'nginx-metrics'
+                kubernetes_sd_configs:
+                  - role: pod
+                relabel_configs:
+                  - source_labels: [__meta_kubernetes_pod_label_app]
+                    action: keep
+                    regex: my-nginx-nginx
+                  - source_labels: [__meta_kubernetes_pod_container_port_number]
+                    action: keep
+                    regex: "9113"
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
