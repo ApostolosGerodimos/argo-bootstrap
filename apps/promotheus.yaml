@@ -18,6 +18,8 @@ spec:
           enabled: false
 
         server:
+          persistentVolume:
+            enabled: false
           extraArgs:
             enable-feature: remote-write-receiver
           resources:
