@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://kedacore.github.io/charts
     chart: keda
-    targetRevision: 2.14.2  # Update this if newer version is preferred
+    targetRevision: 2.17.1  # Update this if newer version is preferred
     helm:
       values: |
         metricsServer:
