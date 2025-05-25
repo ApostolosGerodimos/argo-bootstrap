@@ -13,6 +13,11 @@ spec:
       values: |
         metricsServer:
           enabled: true
+        podIdentity:
+          aws:
+            irsa:
+              enabled: true
+              roleArn: arn:aws:iam::719869395447:role/sqs-consumer-role
   destination:
     server: https://kubernetes.default.svc
     namespace: keda
