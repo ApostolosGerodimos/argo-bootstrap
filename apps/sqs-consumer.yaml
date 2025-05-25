@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sqs-consumer
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: sqs-consumer
+  annotations:
+    argocd.argoproj.io/namespace-sync: "true"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ApostolosGerodimos/argo-apps.git
+    targetRevision: main
+    path: sqs-consumer
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: playground
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  revisionHistoryLimit: 3
